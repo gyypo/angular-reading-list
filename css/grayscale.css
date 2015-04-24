@@ -31,7 +31,19 @@ h6 {
 }
 
 ul {
+    font-family: Lora,"Helvetica Neue",Helvetica,Arial,sans-serif;
     text-align: left;
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+input {
+    border-radius: 6px;
+    height: 30px;
+    font-size: 17px;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 p {
