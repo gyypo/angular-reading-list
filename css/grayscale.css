@@ -44,6 +44,8 @@ input {
     padding: 10px;
     text-align: center;
     margin-bottom: 20px;
+    color: black;
+
 }
 
 p {
@@ -66,6 +68,8 @@ a {
     -moz-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
 }
+
+
 
 a:hover,
 a:focus {
