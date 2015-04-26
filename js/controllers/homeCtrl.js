@@ -1,26 +1,46 @@
 var app = angular.module('readingList');
 
-app.controller('homeCtrl', function($scope, angularFire) {
+app.controller('homeCtrl', function($scope, $firebaseArray) {
 
-	var url = "https://textualadventures.firebaseIO.com";  //connects to firebase url
-
-	angularFire(url, $scope, "books").then(function() {
-			//all functions will then go in here. the .then is basically saying to wait for the promise to return before running anything
+	var url = "https://textualadventures.firebaseIO.com"; //connection to firebase
+	var fireRef = new Firebase(url);
 	
-	$scope.wantToRead = function(title, author) {
+	
+	$scope.books = $firebaseArray(fireRef);
+	// $scope.readingBooks = $firebaseArray(fireRef);
+	// $scope.readBooks = $firebaseArray(fireRef);
 
-	}
+	$scope.addBook = function() {  
+		
+		var title = $scope.title.trim();  //.trim removes whitespace from either side of a string 
+		
+		if (!title.length) {  //if no title then just return 
+			return;
+		}
+		
+		$scope.books.$add({         //add book with title/author to books in firebase
+			title: title,
+			author: $scope.author
+		});
 
-	$scope.reading = function(title, author) {
+		$scope.title = "";  //upon submission reset both title and author to empty
+		$scope.author = "";
 
-	}
+	};
 
-	$scope.read = function(title, author) {
+	$scope.readingBook = function() {
+		$scope.readingBooks.$add({
+			title: $scope.title,
+			author: $scope.author
+		});
+	};
 
-	}
+	$scope.readBook = function(title, author) {
+
+	};
 
 
-	})
+	
 });
 
 

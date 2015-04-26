@@ -37,6 +37,10 @@ ul {
     margin-top: 10px;
 }
 
+li {
+    margin-top: 5px;
+}
+
 input {
     border-radius: 6px;
     height: 30px;
