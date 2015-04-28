@@ -96,7 +96,7 @@
                     <button type="button" class="btn btn-default" ng-click="addBook()">Submit</button>
 
                 <ul>
-                    <li ng-repeat="book in books"><b>{{book.title}}</b> by {{book.author}}<button type="button" class="btn btn-default" ng-click="readingBook()">Reading!</button></li>
+                    <li ng-repeat="book in books"><em>{{book.title}}</em> by {{book.author}}<button type="button" class="btn btn-default" ng-click="readingBook(book)">Reading!</button></li>
                  </ul>
  <!--      <div ng-repeat="model in collection track by model.id">
   {{model.name}}
@@ -111,9 +111,9 @@
             <div class="container">
                 <div class="col-lg-8 col-lg-offset-2">
                     <h2>Reading</h2>
-                    <p>Books I am currently reading</p>
+                    <p>Books I'm currently reading</p>
                         <ul>
-                            <li ng-repeat="book in readingBooks"><button type="button" class="btn btn-default">Finished!</button></li>
+                            <li ng-repeat="book in readingBooks"><em>{{book.title}}</em> by {{book.author}}<button type="button" class="btn btn-default" ng-click="readBook(book)">Finished!</button></li>
                         </ul>
                    <!--  <a href="http://startbootstrap.com/template-overviews/grayscale/" class="btn btn-default btn-lg">Visit Download Page</a>
          <!-       </div>
@@ -127,9 +127,10 @@
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Read</h2>
                 <p>Books I've read</p>
-                <ul>
-                    <li>something</li>
-                </ul>
+                    <ul>
+                        <li ng-repeat="book in readBooks"><em>{{book.title}}</em> by {{book.author}}</li>
+                       <!-- <li>sadasdasdasd</li> -->
+                    </ul>
             </div>
         </div>
     </section>

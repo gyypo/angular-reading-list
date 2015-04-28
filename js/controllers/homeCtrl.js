@@ -1,44 +1,47 @@
 var app = angular.module('readingList');
 
-app.controller('homeCtrl', function($scope, $firebaseArray) {
+app.controller('homeCtrl', function($scope, $firebaseArray, homeService) {
 
-	var url = "https://textualadventures.firebaseIO.com"; //connection to firebase
-	var fireRef = new Firebase(url);
+	var books = new Firebase("https://textualadventures.firebaseIO.com/books");
+	var readingBooks = new Firebase("https://textualadventures.firebaseIO.com/readingBooks");
+	var readBooks = new Firebase("https://textualadventures.firebaseIO.com/readBooks");  //endpoints
+
+	$scope.books = $firebaseArray(books);
+	$scope.readingBooks = $firebaseArray(readingBooks);
+	$scope.readBooks = $firebaseArray(readBooks);
+
+
+
+
+	$scope.addBook = function() {  //function to add book to want to read
+
+	 	$scope.books.$add({
+	 		author: $scope.author,
+	 		title: $scope.title
+	 	})
+
+	 	$scope.author = "";
+	 	$scope.title = "";
+	 }
+
+	$scope.readingBook = function(book) {
+		$scope.readingBooks.$add(book);
+		$scope.books.$remove(book);
+	}
+
+	$scope.readBook = function(book) {
+		$scope.readBooks.$add(book);
+		$scope.readingBooks.$remove(book);
+	}
+
+
+
+
+
+
+
 	
 	
-	$scope.books = $firebaseArray(fireRef);
-	// $scope.readingBooks = $firebaseArray(fireRef);
-	// $scope.readBooks = $firebaseArray(fireRef);
-
-	$scope.addBook = function() {  
-		
-		var title = $scope.title.trim();  //.trim removes whitespace from either side of a string 
-		
-		if (!title.length) {  //if no title then just return 
-			return;
-		}
-		
-		$scope.books.$add({         //add book with title/author to books in firebase
-			title: title,
-			author: $scope.author
-		});
-
-		$scope.title = "";  //upon submission reset both title and author to empty
-		$scope.author = "";
-
-	};
-
-	$scope.readingBook = function() {
-		$scope.readingBooks.$add({
-			title: $scope.title,
-			author: $scope.author
-		});
-	};
-
-	$scope.readBook = function(title, author) {
-
-	};
-
 
 	
 });
