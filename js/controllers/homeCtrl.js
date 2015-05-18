@@ -34,7 +34,7 @@ app.controller('homeCtrl', function($scope, $firebaseArray, homeService) {
 		$scope.readingBooks.$remove(book);
 	}
 
-
+	
 
 
 
@@ -49,13 +49,3 @@ app.controller('homeCtrl', function($scope, $firebaseArray, homeService) {
 
 
 
-
-
-// app.controller('homeCtrl', function($scope, $firebaseObject) {
-
-// var ref = new Firebase("https://textualadventures.firebaseio.com/data");
-
-// $scope.hello = alert("hey");
-
-
-// });
